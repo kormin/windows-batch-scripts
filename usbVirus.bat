@@ -1,0 +1,1 @@
+attrib -h -s -r -a /s /d Drive Name:*.*
