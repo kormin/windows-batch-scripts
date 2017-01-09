@@ -10,9 +10,9 @@ if not exist %file%.txt (
 set /p wfval=<%file%.txt
 rem echo %wfval%
 netsh wlan show networks | FIND "%wfval%" /I /C
-rem if %errorlevel% equ 1 (
-rem 	netsh interface set interface name="Wi-Fi" admin=enable
-rem ) else (
-rem 	netsh interface set interface name="Wi-Fi" admin=disable
-rem )
+if %errorlevel% equ 1 (
+	netsh interface set interface name="Wi-Fi" admin=enable
+) else (
+	netsh interface set interface name="Wi-Fi" admin=disable
+)
 pause
