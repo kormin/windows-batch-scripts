@@ -1,21 +1,22 @@
 @echo off
-set file=wifiName
-if not exist %file%.txt (
-	rem request for user input
-	set /p wifi="Enter name of Wi-Fi connection: "
-	rem write to file
-	@echo %wifi% > %file%.txt
-	rem echo %file%.txt does not exist
-	pause
-	exit
-)
-rem read from file
-set /p wfval=<%file%.txt
+rem set file=wifiName
+rem if not exist %file%.txt (
+rem 	rem request for user input
+rem 	set /p wifi="Enter name of Wi-Fi connection: "
+rem 	rem write to file
+rem 	@echo %wifi% > %file%.txt
+rem 	rem echo %file%.txt does not exist
+rem 	pause
+rem 	exit
+rem )
+rem rem read from file
+rem set /p wfval=<%file%.txt
 rem echo %wfval%
-netsh wlan show networks | FIND "%wfval%" /I /C
+set wf=Wi-Fi
+netsh wlan show networks | FIND "%wf%" /I /C
 if %errorlevel% equ 1 (
-	netsh interface set interface name="Wi-Fi" admin=enable
+	netsh interface set interface name="%wf%" admin=enable
 ) else (
-	netsh interface set interface name="Wi-Fi" admin=disable
+	netsh interface set interface name="%wf%" admin=disable
 )
 pause
