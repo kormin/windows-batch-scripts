@@ -1,2 +1,4 @@
 *.txt
 *.part
+*.sublime-project
+*.sublime-workspace
